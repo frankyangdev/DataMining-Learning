@@ -115,7 +115,7 @@ Leaf-wise是一种更为高效的策略，每次从当前所有叶子中，找�
 
 Reference:
 
-[Xgboost算法](ttps://blog.csdn.net/qq_20412595/article/details/82621744)
+[Xgboost算法](https://blog.csdn.net/qq_20412595/article/details/82621744)
 
 [LGB算法梳理](https://blog.csdn.net/huochangu8606/article/details/99655759)
 
