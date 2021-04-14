@@ -96,7 +96,8 @@ P = σ( y_predict )
 4 支持向量机SVM 算法
 * 在 scikit-learn 中的 SVC() 中的一个参数：probability
 * probability = True：SVC() 返回样本为各个类别的概率；（默认为 False）
-* 
+* 使用 Soft Voting 时，SVC() 算法的参数：probability=True
+
 ```python
 from sklearn.svm import SVC
 svc = SVC(probability=True)
@@ -109,7 +110,9 @@ svc = SVC(probability=True)
 
 
 
-Reference: [集成学习 (投票分类器) ](https://blog.csdn.net/soullines/article/details/103994749)
+**Reference:**
+[集成学习（Soft Voting Classifier）](https://blog.csdn.net/ab1213456/article/details/102214462)
+[集成学习 (投票分类器) ](https://blog.csdn.net/soullines/article/details/103994749)
 
 
 
