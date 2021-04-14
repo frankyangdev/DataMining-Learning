@@ -195,7 +195,7 @@ shp = r"E:\Dev\data\lineRoads.shp"
 geoDataFrame.to_file(shp,driver="ESRI Shapefile",encoding="utf-8")
 ```
 
-#### 2.4 Python Package: [keplergl](https://pypi.org/project/keplergl/) ####
+#### 2.3 Python Package: [keplergl](https://pypi.org/project/keplergl/) ####
 
 [keplergl in GitHub](https://github.com/keplergl/kepler.gl) 
 
@@ -351,7 +351,7 @@ yarn==1.7.0
 
 
 
-#### 2.5 道格拉斯-普克算法(Douglas–Peucker algorithm) ####
+#### 2.4 道格拉斯-普克算法(Douglas–Peucker algorithm) ####
 
 道格拉斯-普克算法(Douglas–Peucker algorithm，亦称为拉默-道格拉斯-普克算法、迭代适应点算法、分裂与合并算法)是将曲线近似表示为一系列点，并减少点的数量的一种算法。该算法的原始类型分别由乌尔斯·拉默（Urs Ramer）于1972年以及大卫·道格拉斯（David Douglas）和托马斯·普克（Thomas Peucker）于1973年提出，并在之后的数十年中由其他学者予以完善。
 
@@ -376,8 +376,37 @@ The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the n
 <img src="https://rdp.readthedocs.io/en/latest/_images/rdp.gif" alt="Ramer-Douglas-Peucker Algorithm" width="472"/>
 
 
+#### 2.5 Python Package Pickle ####
 
+[pickle — Python object serialization](https://docs.python.org/3/library/pickle.html)
 
+The pickle module implements binary protocols for serializing and de-serializing a Python object structure. “Pickling” is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy. Pickling (and unpickling) is alternatively known as “serialization”, “marshalling,” 1 or “flattening”; however, to avoid confusion, the terms used here are “pickling” and “unpickling”.
+
+```
+**Warning**  The pickle module is not secure. Only unpickle data you trust.
+It is possible to construct malicious pickle data which will execute arbitrary code during unpickling. Never unpickle data that could have come from an untrusted source, or that could have been tampered with.
+
+Consider signing data with hmac if you need to ensure that it has not been tampered with.
+
+Safer serialization formats such as json may be more appropriate if you are processing untrusted data. See Comparison with json.
+```
+
+pickle提供了一个简单的持久化功能。可以将对象以文件的形式存放在磁盘上。
+
+pickle模块只能在python中使用，python中几乎所有的数据类型（列表，字典，集合，类等）都可以用pickle来序列化，
+
+pickle序列化后的数据，可读性差，人一般无法识别。
+
+```
+pickle.dump(obj, file[, protocol])
+```
+　　
+序列化对象，并将结果数据流写入到文件对象中。参数protocol是序列化模式，默认值为0，表示以文本的形式序列化。protocol的值还可以是1或2，表示以二进制的形式序列化
+
+```
+pickle.load(file)
+```
+反序列化对象。将文件中的数据解析为一个Python对象。
 
 
 
@@ -387,6 +416,8 @@ The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the n
 [GeoPandas，几行代码实现点转线功能](https://blog.csdn.net/u012413551/article/details/93535357)
 
 [道格拉斯-普克算法(Douglas–Peucker algorithm)](https://blog.csdn.net/deram_boy/article/details/39177015)
+
+[Python pickle模块学习](https://blog.csdn.net/chunmi6974/article/details/78392230)
 
 
 
