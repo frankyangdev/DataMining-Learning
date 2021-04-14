@@ -70,6 +70,27 @@ Here is the canonical example of building an approximately circular patch by buf
 313.65484905459385
 ```
 
+####2.2 Python Package: [GeoPandas](https://geopandas.org/)
+
+[geopandas in GitHub](https://github.com/geopandas/geopandas)
+
+GeoPandas is an open source project to make working with geospatial data in python easier. GeoPandas extends the datatypes used by pandas to allow spatial operations on geometric types. Geometric operations are performed by shapely. Geopandas further depends on fiona for file access and matplotlib for plotting.
+
+GeoPandas enables you to easily do operations in python that would otherwise require a spatial database such as PostGIS.
+
+** Installation **
+
+GeoPandas depends on the following packages:
+
+* pandas
+* shapely
+* fiona
+* pyproj
+
+```
+pip install geopandas
+```
+
 
 
 
