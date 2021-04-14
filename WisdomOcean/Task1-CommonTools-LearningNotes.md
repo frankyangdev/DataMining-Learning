@@ -14,6 +14,8 @@ Shapely is a BSD-licensed Python package for manipulation and analysis of planar
 
 [Shapely documentation and manual](https://shapely.readthedocs.io/en/latest/)
 
+[user manual](https://shapely.readthedocs.io/en/latest/manual.html#introduction)
+
 **Installation**
 Linux, OS X, and Windows users can get Shapely wheels with GEOS included from the Python Package Index with a recent version of pip (8+):
 
