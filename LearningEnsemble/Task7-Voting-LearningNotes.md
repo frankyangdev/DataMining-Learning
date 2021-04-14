@@ -54,23 +54,58 @@ out:
 
 注意 voting_clf 中voting参数:
 
-* hard: 独立个体的大多数类别就是改预测器的预测结果
-```
-模型1: A-0.9 B-0.1
-模型2: A-0.8 B-0.9      # A 1票(模型1) B 3票   Hard voting预测结果B
-模型3: A-0.3 B-0.2
-模型4: A-0.4 B-0.3
+* Hard Voting Classifier：根据少数服从多数来定最终结果,独立个体的大多数类别就是改预测器的预测结果
+
+![image](https://user-images.githubusercontent.com/39177230/114676983-6dc29780-9d3c-11eb-96e9-01e262242315.png)
+
+
+* Soft Voting Classifier：将所有模型预测样本为某一类别的概率的平均值作为标准，最后横向比较,概率最高的对应的类型为最终的预测结果
+
+![image](https://user-images.githubusercontent.com/39177230/114677050-803cd100-9d3c-11eb-8032-3d3a17637d46.png)
+
+* Hard Voting 投票方式的弊端：如上图，最终的分类结果不是由概率值更大的模型 1 和模型 4 决定，而是由概率值相对较低的模型 2/3/5 来决定的；
+
+
+### 3.各分类算法的概率计算 ###
+**Soft Voting 的决策方式，要求集合的每一个模型都能估计概率；**
+
+1. 逻辑回归算法(logistic regression)
+
+P = σ( y_predict )
+
+![image](https://user-images.githubusercontent.com/39177230/114677446-e590c200-9d3c-11eb-8bbd-03b9c4676b3a.png)
+
+2. kNN 算法
+
+* k 个样本点中，数量最多的样本所对应的类别作为最终的预测结果；
+* kNN 算法也可以考虑权值，根据选中的 k 个点距离待预测点的距离不同，k 个点的权值也不同；
+
+* P = n / k
+* n：k 个样本中，最终确定的类型的个数；如下图，最终判断为 红色类型，概率：p = n/k = 2 / 3；
+
+![image](https://user-images.githubusercontent.com/39177230/114677673-1e309b80-9d3d-11eb-824a-95d34a8abd55.png)
+
+3. 决策树算法(descion tree)
+
+* 通常在“叶子”节点处的信息熵或者基尼系数不为 0，数据集中包含多种类别的数据，以数量最多的样本对应的类别作为最终的预测结果；（和 kNN 算法类似）
+* P = n / N 
+* n：“叶子”中数量最多的样本的类型对应的样本数量；
+* N：“叶子”中样本总量；
+
+
+4 支持向量机SVM 算法
+* 在 scikit-learn 中的 SVC() 中的一个参数：probability
+* probability = True：SVC() 返回样本为各个类别的概率；（默认为 False）
+* 
+```python
+from sklearn.svm import SVC
+svc = SVC(probability=True)
 ```
 
 
-* soft: 将每个预测器对某一类别的概率进行平均,最后横向比较
 
-```
-模型1: A-0.9 B-0.1
-模型2: A-0.8 B-0.9      # A 平均概率:0.6 B 平均概率:0.375   Soft voting预测结果A
-模型3: A-0.3 B-0.2
-模型4: A-0.4 B-0.3
-```
+
+
 
 
 
