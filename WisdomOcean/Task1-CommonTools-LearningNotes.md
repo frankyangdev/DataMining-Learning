@@ -370,8 +370,7 @@ yarn==1.7.0
 * 当所有曲线都处理完毕时，依次连接各个分割点形成的折线，即可以作为曲线的近似。
 
 
-
-[Ramer-Douglas-Peucker Algorithm](https://rdp.readthedocs.io/en/latest/_images/rdp.gif)
+<img src="https://rdp.readthedocs.io/en/latest/_images/rdp.gif" alt="Ramer-Douglas-Peucker Algorithm" width="472"/>
 
 The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the number of points in a curve that is approximated by a series of points.
 
