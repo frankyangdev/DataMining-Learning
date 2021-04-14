@@ -195,6 +195,180 @@ shp = r"E:\Dev\data\lineRoads.shp"
 geoDataFrame.to_file(shp,driver="ESRI Shapefile",encoding="utf-8")
 ```
 
+#### 2.4 Python Package: [keplergl](https://pypi.org/project/keplergl/)####
+
+** [keplergl in GitHub](https://github.com/keplergl/kepler.gl) **
+
+**[KeplerGL-jupyter](https://docs.kepler.gl/docs/keplergl-jupyter) **
+
+
+
+Kepler.gl is a data-agnostic, high-performance web-based application for visual exploration of large-scale geolocation data sets. Built on top of Mapbox GL and deck.gl, kepler.gl can render millions of points representing thousands of trips and perform spatial aggregations on the fly.
+
+Kepler.gl is also a React component that uses Redux to manage its state and data flow. It can be embedded into other React-Redux applications and is highly customizable. 
+
+**Installation**
+
+```python
+$ pip install keplergl
+```
+
+**Usage Example**
+
+1. Load keplergl map
+
+```
+KeplerGl()
+```
+
+
+```python
+# Load an empty map
+from keplergl import KeplerGl
+map_1 = KeplerGl()
+map_1
+```
+
+```python
+# Load a map with data and config and height
+from keplergl import KeplerGl
+map_2 = KeplerGl(height=400, data={"data_1": my_df}, config=config)
+map_2
+```
+
+2. Add Data
+
+```
+.add_data()
+```
+
+kepler.gl expected the data to be CSV, GeoJSON, DataFrame or GeoDataFrame. You can call add_data multiple times to add multiple datasets to kepler.gl
+
+```python
+# DataFrame
+df = pd.read_csv('hex-data.csv')
+map_1.add_data(data=df, name='data_1')
+
+# CSV
+with open('csv-data.csv', 'r') as f:
+    csvData = f.read()
+map_1.add_data(data=csvData, name='data_2')
+
+# GeoJSON as string
+with open('sf_zip_geo.json', 'r') as f:
+    geojson = f.read()
+
+map_1.add_data(data=geojson, name='geojson')
+```
+
+3. Customize the map
+Interact with kepler.gl and customize layers and filters. Map data and config will be stored locally to the widget state. To make sure the map state is saved, select Widgets > Save Notebook Widget State, before shutting down the kernel.
+
+
+4. Save and load config
+```
+.config
+```
+
+```python
+map_1.config
+## {u'config': {u'mapState': {u'bearing': 2.6192893401015205,
+#  u'dragRotate': True,
+#   u'isSplit': False,
+#   u'latitude': 37.76209132041332,
+#   u'longitude': -122.42590232651203,
+```
+
+5.  Match config with data
+
+All layers, filters and tooltips are associated with a specific dataset. Therefore the data and config in the map has to be able to match each other. The name of the dataset is assigned to:
+
+* dataId of layer.config,
+* dataId of filter
+* key in interactionConfig.tooltip.fieldToShow.
+
+![image](https://user-images.githubusercontent.com/39177230/114693130-df561200-9d4b-11eb-9b9d-237afbdb1d83.png)
+
+
+you can print your current map configuration at any time in the notebook
+
+6. Save Map
+
+When you click in the map and change settings, config is saved to widget state. Closing the notebook and reopen it will reload current map. However, you need to manually select Widget > Save Notebook Widget State before shut downing the kernel to make sure it will be reloaded.
+
+```
+.save_to_html()
+```
+You can export your current map as an interactive html file
+
+```python
+# this will save current map
+map_1.save_to_html(file_name='first_map.html')
+
+# this will save map with provided data and config
+map_1.save_to_html(data={'data_1': df}, config=config, file_name='first_map.html')
+
+# this will save map with the interaction panel disabled
+map_1.save_to_html(file_name='first_map.html', read_only=True)
+```
+
+```
+._repr_html_()
+```
+You can also directly serve the current map via a flask app. To do that return kepler’s map HTML representation.
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return map_1._repr_html_()
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+```
+
+**What's your python and node env?**
+
+* Python:
+
+```
+python==3.7.4
+notebook==6.0.3
+jupyterlab==2.1.2
+ipywidgets==7.5.1
+```
+
+* Node (Only for JupyterLab)
+```
+node==8.15.0
+yarn==1.7.0
+```
+
+
+
+
+#### 2.5 道格拉斯-普克算法(Douglas–Peucker algorithm) ####
+
+道格拉斯-普克算法(Douglas–Peucker algorithm，亦称为拉默-道格拉斯-普克算法、迭代适应点算法、分裂与合并算法)是将曲线近似表示为一系列点，并减少点的数量的一种算法。该算法的原始类型分别由乌尔斯·拉默（Urs Ramer）于1972年以及大卫·道格拉斯（David Douglas）和托马斯·普克（Thomas Peucker）于1973年提出，并在之后的数十年中由其他学者予以完善。
+
+
+经典的Douglas-Peucker算法描述如下：
+
+* 在曲线首尾两点A，B之间连接一条直线AB，该直线为曲线的弦；
+
+* 得到曲线上离该直线段距离最大的点C，计算其与AB的距离d；
+
+* 比较该距离与预先给定的阈值threshold的大小，如果小于threshold，则该直线段作为曲线的近似，该段曲线处理完毕。
+
+* 如果距离大于阈值，则用C将曲线分为两段AC和BC，并分别对两段取信进行1~3的处理。
+
+* 当所有曲线都处理完毕时，依次连接各个分割点形成的折线，即可以作为曲线的近似。
+
+
 
 
 
@@ -206,6 +380,9 @@ geoDataFrame.to_file(shp,driver="ESRI Shapefile",encoding="utf-8")
 ### Reference: ###
 
 [GeoPandas，几行代码实现点转线功能](https://blog.csdn.net/u012413551/article/details/93535357)
+
+[道格拉斯-普克算法(Douglas–Peucker algorithm)](https://blog.csdn.net/deram_boy/article/details/39177015)
+
 
 
 
