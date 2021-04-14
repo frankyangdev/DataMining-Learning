@@ -355,6 +355,7 @@ yarn==1.7.0
 
 道格拉斯-普克算法(Douglas–Peucker algorithm，亦称为拉默-道格拉斯-普克算法、迭代适应点算法、分裂与合并算法)是将曲线近似表示为一系列点，并减少点的数量的一种算法。该算法的原始类型分别由乌尔斯·拉默（Urs Ramer）于1972年以及大卫·道格拉斯（David Douglas）和托马斯·普克（Thomas Peucker）于1973年提出，并在之后的数十年中由其他学者予以完善。
 
+[Ramer-Douglas-Peucker Algorithm](https://rdp.readthedocs.io/en/latest/)
 
 经典的Douglas-Peucker算法描述如下：
 
@@ -370,6 +371,9 @@ yarn==1.7.0
 
 
 
+[Ramer-Douglas-Peucker Algorithm](https://rdp.readthedocs.io/en/latest/_images/rdp.gif)
+
+The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the number of points in a curve that is approximated by a series of points.
 
 
 
