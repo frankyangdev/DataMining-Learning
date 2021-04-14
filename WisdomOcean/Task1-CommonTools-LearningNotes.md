@@ -376,7 +376,56 @@ The Ramer–Douglas–Peucker algorithm (RDP) is an algorithm for reducing the n
 <img src="https://rdp.readthedocs.io/en/latest/_images/rdp.gif" alt="Ramer-Douglas-Peucker Algorithm" width="472"/>
 
 
-#### 2.5 Python Package Pickle ####
+#### 2.5 Python Package [geohash](https://pypi.org/project/python-geohash/)
+
+**[geohash in GitHub](https://github.com/vinsci/geohash) **
+
+* GeoHash是一种地址编码方法。他能够把二维的空间经纬度数据编码成一个字符串。GeoHash具有以下特点：
+1. GeoHash用一个字符串表示经度和纬度两个坐标。在数据库中可以实现在一列上应用索引
+2. GeoHash表示的并不是一个点，而是一个区域；
+3. GeoHash编码的前缀可以表示更大的区域。例如wx4g0ec1，它的前缀wx4g0e表示包含编码wx4g0ec1在内的更大范围。 这个特性可以用于附近地点搜索
+* 计算方法：
+GeoHash的计算过程分为三步：
+1. 将经纬度转换成二进制：
+比如这样一个点（39.923201, 116.390705）
+纬度的范围是（-90，90），其中间值为0。对于纬度39.923201，在区间（0，90）中，因此得到一个1；（0，90）区间的中间值为45度，纬度39.923201小于45，因此得到一个0，依次计算下去，即可得到纬度的二进制表示，如下表：
+
+![image](https://user-images.githubusercontent.com/39177230/114714371-a4140d00-9d64-11eb-8bbd-03d71901a0f1.png)
+
+
+最后得到纬度的二进制表示为：
+10111000110001111001
+同理可以得到经度116.390705的二进制表示为：
+11010010110001000100
+
+2. 合并纬度、经度的二进制：
+合并方法是将经度、纬度二进制按照奇偶位合并：
+11100 11101 00100 01111 00000 01101 01011 00001
+3. 按照Base32进行编码：
+Base32编码表（其中一种）：
+
+![image](https://user-images.githubusercontent.com/39177230/114714548-cc037080-9d64-11eb-9359-6eb8ccabcfa6.png)
+
+将上述合并后二进制编码后结果为：wx4g0ec1
+
+3. GeoHash的精度
+
+编码越长，表示的范围越小，位置也越精确。因此我们就可以通过比较GeoHash匹配的位数来判断两个点之间的大概距离。
+
+![image](https://user-images.githubusercontent.com/39177230/114714731-f6edc480-9d64-11eb-8171-7945a84fe396.png)
+
+4. 不足之处及解决方法
+* 边缘附近的点，黄色的点要比黑色的点更加靠近红点，但是由于黑点跟红点的GeoHash前缀匹配数目更多，因此得到黑点更加靠近红点的结果
+
+解决方法：
+可以通过筛选周围8个区域内的所有点，然后计算距离得到满足条件结果。
+* 因为现有的GeoHash算法使用的是Peano空间填充曲线（可感兴趣的可自己查看），这种曲线会产生突变，造成了编码虽然相似但距离可能相差很大的问题，因此在查询附近的时候，首先筛选GeoHash编码相似的点，然后进行实际距离计算。
+
+![image](https://user-images.githubusercontent.com/39177230/114714960-2c92ad80-9d65-11eb-90af-20331897512f.png)
+
+
+
+#### 2.6 Python Package Pickle ####
 
 [pickle — Python object serialization](https://docs.python.org/3/library/pickle.html)
 
@@ -421,6 +470,10 @@ pickle.load(file)
 [道格拉斯-普克算法(Douglas–Peucker algorithm)](https://blog.csdn.net/deram_boy/article/details/39177015)
 
 [Python pickle模块学习](https://blog.csdn.net/chunmi6974/article/details/78392230)
+
+[地理空间索引：GeoHash原理](https://blog.csdn.net/zhufenghao/article/details/85568340)
+
+[GeoHash简介](https://blog.csdn.net/youhongaa/article/details/78816700)
 
 
 
