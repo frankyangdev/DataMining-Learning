@@ -70,7 +70,7 @@ Here is the canonical example of building an approximately circular patch by buf
 313.65484905459385
 ```
 
-#### 2.2 Python Package: [GeoPandas](https://geopandas.org/)####
+#### 2.2 Python Package: [GeoPandas](https://geopandas.org/) ####
 
 [geopandas in GitHub](https://github.com/geopandas/geopandas)
 
@@ -195,7 +195,7 @@ shp = r"E:\Dev\data\lineRoads.shp"
 geoDataFrame.to_file(shp,driver="ESRI Shapefile",encoding="utf-8")
 ```
 
-#### 2.4 Python Package: [keplergl](https://pypi.org/project/keplergl/)####
+#### 2.4 Python Package: [keplergl](https://pypi.org/project/keplergl/) ####
 
 ** [keplergl in GitHub](https://github.com/keplergl/kepler.gl) **
 
