@@ -403,7 +403,7 @@ pickle序列化后的数据，可读性差，人一般无法识别。
 ```
 pickle.dump(obj, file[, protocol])
 ```
-　　
+
 反序列化对象。将文件中的数据解析为一个Python对象。
 
 ```
