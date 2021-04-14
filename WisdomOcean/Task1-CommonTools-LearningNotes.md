@@ -197,9 +197,9 @@ geoDataFrame.to_file(shp,driver="ESRI Shapefile",encoding="utf-8")
 
 #### 2.4 Python Package: [keplergl](https://pypi.org/project/keplergl/) ####
 
-**[keplergl in GitHub](https://github.com/keplergl/kepler.gl) **
+[keplergl in GitHub](https://github.com/keplergl/kepler.gl) 
 
-**[KeplerGL-jupyter](https://docs.kepler.gl/docs/keplergl-jupyter) **
+[KeplerGL-jupyter](https://docs.kepler.gl/docs/keplergl-jupyter) 
 
 
 
