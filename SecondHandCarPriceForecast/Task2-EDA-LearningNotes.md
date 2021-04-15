@@ -7,7 +7,21 @@
 
 
 
-### 2. Code Study ###
+### 2. EDA Study ###
+
+![image](https://user-images.githubusercontent.com/39177230/114896545-05aaa900-9e43-11eb-819d-00a1439f7944.png)
+
+
+**Exploratory Data Analysis(EDA):** Exploratory data analysis is a complement to inferential statistics, which tends to be fairly rigid with rules and formulas. At an advanced level, EDA involves looking at and describing the data set from different angles and then summarizing it.
+
+* Descriptive Statistics:
+
+The type of statistics dealing with numbers (numerical facts, figures, or information) to describe any phenomena. These numbers are descriptive statistics. e.g. Reports of industry production, cricket batting averages, government deficits, Movie Ratings etc.
+
+* Inferential statistics
+
+Inferential statistics is a decision, estimate, prediction, or generalization about a population, based on a sample. A population is a collection of all possible individual, objects, or measurements of interest. A sample is a portion, or part, of the population of interest. Inferential statistics is used to make inferences from data whereas descriptive statistics simply describe what’s going on in our data.
+
 
 #### 2.1 Python Package [pandas-profiling](https://pypi.org/project/pandas-profiling/)
 
@@ -132,7 +146,12 @@ gui = show(mpg)
 
 
 **Reference**：
+
 [Python数据分析EDA](https://blog.csdn.net/weixin_33201531/article/details/112898635)
+
+[Exploratory Data Analysis(EDA) From Scratch in Python](https://medium.com/swlh/exploratory-data-analysis-eda-from-scratch-in-python-8c12c2673aa7)
+
+[](https://medium.com/analytics-vidhya/basic-statistics-in-data-science-38245e9b32bf)
 
 
 
