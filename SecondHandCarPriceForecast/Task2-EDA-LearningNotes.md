@@ -100,3 +100,39 @@ my_report.show_html()
 
 ![image](https://user-images.githubusercontent.com/39177230/114891944-e873db80-9e3e-11eb-9473-34aacea3a7be.png)
 
+#### 2.3 Python Pacakge: [PandasGUI](https://pypi.org/project/pandasgui/) ####
+
+PandasGUI与前面的两个不同，PandasGUI不会生成报告，而是生成一个GUI(图形用户界面)的数据框，可以使用它来更详细地分析Dataframe。
+
+```
+!pip3 install pandasgui
+```
+
+```python
+from pandasgui import show
+
+gui = show(mpg)
+```
+
+在此GUI中，可以做很多事情，比如过滤、统计信息、在变量之间创建图表、以及重塑数据。这些操作可以根据需求拖动选项卡来完成。
+绘图器功能,用它进行拖拽操作简直和excel没有啥区别
+
+还可以通过创建新的数据透视表或者融合数据集来进行重塑。
+
+然后，处理好的数据集可以直接导出成csv。
+
+**总结**
+
+* Pandas Profiling 适用于快速生成单个变量的分析。
+
+* Sweetviz 适用于数据集之间和目标变量之间的分析。
+
+* PandasGUI适用于具有手动拖放功能的深度分析。
+
+
+
+**Reference**：
+[Python数据分析EDA](https://blog.csdn.net/weixin_33201531/article/details/112898635)
+
+
+
