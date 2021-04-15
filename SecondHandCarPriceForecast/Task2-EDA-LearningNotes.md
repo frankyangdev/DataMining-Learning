@@ -47,7 +47,10 @@ pfr.to_file("./example.html")
 
 #### 2.2 Python Package [sweetviz](https://pypi.org/project/sweetviz/)
 
-**总结： 和pandas_profiling比较，Sweetviz 更sweet一些，提供比较详细的取值明细**
+**总结：**
+
+* 和pandas_profiling比较，Sweetviz 更sweet一些，提供比较详细的取值明细
+* 生成的html文件远小于pandas_profling,可以根据实际需要选取其中一种
 
 Sweetviz is an open-source Python library that generates beautiful, high-density visualizations to kickstart EDA (Exploratory Data Analysis) with just two lines of code. Output is a fully self-contained HTML application.
 
