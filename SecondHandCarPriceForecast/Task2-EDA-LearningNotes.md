@@ -7,7 +7,7 @@
 
 
 
-### 2. Code Study###
+### 2. Code Study ###
 
 #### 2.1 Python Package [pandas-profiling](https://pypi.org/project/pandas-profiling/)
 
