@@ -14,6 +14,9 @@
 
 **Exploratory Data Analysis(EDA):** Exploratory data analysis is a complement to inferential statistics, which tends to be fairly rigid with rules and formulas. At an advanced level, EDA involves looking at and describing the data set from different angles and then summarizing it.
 
+![image](https://user-images.githubusercontent.com/39177230/114896961-5f12d800-9e43-11eb-9c11-a95a3c0a043d.png)
+
+
 * Descriptive Statistics:
 
 The type of statistics dealing with numbers (numerical facts, figures, or information) to describe any phenomena. These numbers are descriptive statistics. e.g. Reports of industry production, cricket batting averages, government deficits, Movie Ratings etc.
