@@ -11,6 +11,10 @@
 
 #### 2.1 Python Package [sweetviz](https://pypi.org/project/sweetviz/)
 
+
+
+#### 2.2 Python Package [sweetviz](https://pypi.org/project/sweetviz/)
+
 Sweetviz is an open-source Python library that generates beautiful, high-density visualizations to kickstart EDA (Exploratory Data Analysis) with just two lines of code. Output is a fully self-contained HTML application.
 
 The system is built around quickly visualizing target values and comparing datasets. Its goal is to help quick analysis of target characteristics, training vs testing data, and other such data characterization tasks.
@@ -42,3 +46,16 @@ The system is built around quickly visualizing target values and comparing datas
   * Numerical analysis:
   
   * min/max/range, quartiles, mean, mode, standard deviation, sum, median absolute deviation, coefficient of variation, kurtosis, skew
+
+```python
+import sweetviz as sv
+
+my_report = sv.analyze(Train_data)
+my_report.show_html()
+```
+
+![image](https://user-images.githubusercontent.com/39177230/114892080-04777d00-9e3f-11eb-9be1-b55ac6615e98.png)
+
+
+![image](https://user-images.githubusercontent.com/39177230/114891944-e873db80-9e3e-11eb-9473-34aacea3a7be.png)
+
