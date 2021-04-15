@@ -147,7 +147,7 @@ gui = show(mpg)
 * PandasGUI适用于具有手动拖放功能的深度分析。
 
 
-#### 数据处理 ####
+#### 2.4 数据处理 ####
 
 1. 处理缺失值 (Handling missing value) 
 
