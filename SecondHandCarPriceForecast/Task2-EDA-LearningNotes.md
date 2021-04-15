@@ -147,6 +147,69 @@ gui = show(mpg)
 * PandasGUI适用于具有手动拖放功能的深度分析。
 
 
+#### 数据处理 ####
+
+1. 处理缺失值 (Handling missing value) 
+
+* Drop the missing values: In this case, we drop the missing values from those variables. In case there are very few missing values you can drop those values.
+删除缺失值：在这种情况下，我们从那些变量中删除缺失值。 如果缺少的值很少，则可以删除这些值。
+
+* Impute with mean value: For the numerical column, you can replace the missing values with mean values. Before replacing with mean value, it is advisable to check that the variable shouldn’t have extreme values .i.e. outliers.
+用平均值估算：对于数字列，您可以用平均值替换缺失值。 在用平均值代替之前，建议检查变量不应该具有极高的值，即离群值。
+
+* Impute with median value: For the numerical column, you can also replace the missing values with median values. In case you have extreme values such as outliers it is advisable to use the median approach.
+用中值估算：对于数字列，您也可以用中值替换缺失值。 如果您有极端值(如离群值)，建议使用中位数法。
+
+* Impute with mode value: For the categorical column, you can replace the missing values with mode values i.e the frequent ones.
+带模式值的插补：对于类别列，您可以将缺失值替换为模式值，即频繁的值。
+
+2. 处理重复记录 (Handling Duplicate records)
+
+```python
+df.duplciated()
+
+df.drop_duplicates(inplace=True)
+
+df1 = df.duplciated()
+df1.sum()
+```
+
+3. 处理异常值 (Handling Outlier)
+
+作为最极端观察值的异常值可能包括样本最大值或样本最小值，或两者都包括，这取决于它们是极高还是极低。 但是，样本的最大值和最小值并不总是离群值，因为它们可能与其他观测值相距不远。
+通常，我们借助boxplot识别异常值，因此这里的box plot显示了数据范围之外的一些数据点。
+
+* Drop the outlier value
+降低离群值
+
+* Replace the outlier value using the IQR
+使用IQR替换离群值
+
+4. 双变量分析 (Bivariate Analysis)
+
+当我们谈论双变量分析时，它意味着分析2个变量。 由于我们知道存在数值变量和类别变量，因此有一种分析这些变量的方法，如下所示：
+
+Numerical vs. Numerical1. Scatterplot2. Line plot3. Heatmap for correlation4. Joint plot
+
+Categorical vs. Numerical1. Bar chart2. Voilin plot3. Categorical box plot4.Swarm plot
+
+Two Categorcal Variables1. Bar chart2. Grouped bar chart3. Point plot
+
+5. 规范化和缩放 (Normalizing and Scaling)
+
+特征缩放(也称为数据规范化)是用于标准化数据特征范围的方法。 由于数据值的范围可能相差很大，因此它成为使用机器学习算法时数据预处理的必要步骤。
+在这种方法中，我们将具有不同度量标准的变量转换为单个尺度。 StandardScaler使用公式(x-均值)/标准差对数据进行归一化。 我们将仅对数字变量执行此操作。
+
+6. 编码 (ENCODING)
+
+One-Hot-Encoding is used to create dummy variables to replace the categories in a categorical variable into features of each category and represent it using 1 or 0 based on the presence or absence of the categorical value in the record.
+
+一键编码用于创建伪变量，以将分类变量中的类别替换为每个类别的特征，并根据记录中是否存在分类值使用1或0表示它。
+
+This is required to do since the machine learning algorithms only work on the numerical data. That is why there is a need to convert the categorical column into a numerical one.
+
+由于机器学习算法仅对数值数据起作用，因此需要这样做。 这就是为什么需要将分类列转换为数字列的原因。
+
 
 **Reference**：
 
@@ -154,7 +217,9 @@ gui = show(mpg)
 
 [Exploratory Data Analysis(EDA) From Scratch in Python](https://medium.com/swlh/exploratory-data-analysis-eda-from-scratch-in-python-8c12c2673aa7)
 
-[](https://medium.com/analytics-vidhya/basic-statistics-in-data-science-38245e9b32bf)
+[Basic statistics in Data science](https://medium.com/analytics-vidhya/basic-statistics-in-data-science-38245e9b32bf)
+
+[Python 探索性数据分析 EDA](https://blog.csdn.net/weixin_26705651/article/details/108497769)
 
 
 
