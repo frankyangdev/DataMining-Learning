@@ -37,7 +37,7 @@ one_value_fea = [col for col in data_train.columns if data_train[col].nunique() 
 
 ![image](https://user-images.githubusercontent.com/39177230/115050401-4c190a00-9f0e-11eb-87e7-690600b519cf.png)
 
-### 分位图对速度和方向的数据分布进行可视化 ###
+### 分位图对速度和方向的数据分布进行可视化 速度会比方向的数据分布差异大很多 ###
 
 ![image](https://user-images.githubusercontent.com/39177230/115050690-969a8680-9f0e-11eb-8af8-9ed2f0f4d5c3.png)
 
