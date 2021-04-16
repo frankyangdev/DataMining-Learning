@@ -17,7 +17,7 @@
 one_value_fea = [col for col in data_train.columns if data_train[col].nunique() <= 1]
 ```
 
-### 随机取三个投网类型 可视化轨迹###
+### 随机取三个投网类型 可视化轨迹 ###
 
 如果每个类型区别不明显，可以考虑其他图形
 
