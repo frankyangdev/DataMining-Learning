@@ -94,6 +94,43 @@ g 容易做成并行化方法。
 
 h. 实现比较简单。
 
+```python
+# 创建一个含有1000个样本20维特征的随机分类数据集：
+# test classification dataset
+from sklearn.datasets import make_classification
+# define dataset
+X, y = make_classification(n_samples=1000, n_features=20, n_informative=15, 
+                           n_redundant=5, random_state=5)
+# summarize the dataset
+print(X.shape, y.shape)
+
+(1000, 20) (1000,)
+
+```
+
+```python
+#使用重复的分层k-fold交叉验证来评估该模型，一共重复3次，每次有10个fold。我们将评估该模型在所有重复交叉验证中性能的平均值和标准差。
+
+# evaluate bagging algorithm for classification
+from numpy import mean
+from numpy import std
+from sklearn.datasets import make_classification
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.ensemble import BaggingClassifier
+# define dataset
+X, y = make_classification(n_samples=1000, n_features=20, n_informative=15, n_redundant=5, random_state=5)
+# define the model
+model = BaggingClassifier()
+# evaluate the model
+cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+n_scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1, error_score='raise')
+# report performance
+print('Accuracy: %.3f (%.3f)' % (mean(n_scores), std(n_scores)))
+
+
+Accuracy: 0.857 (0.036)
+```
 
 
 
