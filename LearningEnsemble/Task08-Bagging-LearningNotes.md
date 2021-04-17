@@ -40,6 +40,12 @@ Bootstraping的名称来自于成语 ‘’pull up by your own bootstraps‘’�
 ### 随机森林（Random Forest，简称RF）###
 随机森林是Bagging的一个扩展变体，RF在以决策树为基学习器构建Bagging集成的基础上，进一步在决策树的训练过程中映入了随机属性选择。具体来说，传统的决策树在选择划分属性时在当前节点选择一个最优属性；而在RF中对基决策树的每个节点，先从该节点的属性集合中随机选择一个包含k个属性的子集，然后再从这个子集中选择一个最优属性用于划分。在很多例子中表现功能强大，进一步使泛化性能提升，被称为 ‘代表集成学习技术水平的方法’。
 
+
+#### 随机森林算法概述####
+
+随机森林算法是上世纪八十年代Breiman等人提出来的，其基本思想就是构造很多棵决策树，形成一个森林，然后用这些决策树共同决策输出类别是什么。随机森林算法及在构建单一决策树的基础上的，同时是单一决策树算法的延伸和改进。在整个随机森林算法的过程中，有两个随机过程，第一个就是输入数据是随机的从整体的训练数据中选取一部分作为一棵决策树的构建，而且是有放回的选取；第二个就是每棵决策树的构建所需的特征是从整体的特征集随机的选取的，这两个随机过程使得随机森林很大程度上避免了过拟合现象的出现。
+
+
 ![image](https://user-images.githubusercontent.com/39177230/115105652-defb8800-9f92-11eb-8f87-3957aca6e95c.png)
 
 #### 随机森林在Bagging的基础上做了修改 ####
@@ -96,4 +102,5 @@ Bagging + 决策树 = 随机森林
 
 1.  花书 Deep Learning (Ian Goodfellow ,Yoshua Bengio, and Aaron Gourville) - chapter 7.11 Bagging and Other Ensemble Methods
 2. [集成算法(Bagging，随机森林)](https://blog.csdn.net/H_hei/article/details/84196235)
+3. [集成学习算法总结----Boosting和Bagging](https://blog.csdn.net/a1b2c3d4123456/article/details/51834272)
 
