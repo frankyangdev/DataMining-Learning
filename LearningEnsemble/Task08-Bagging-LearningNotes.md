@@ -26,7 +26,7 @@ Each of these individual classification rules is brittle, but if we average thei
 Bagging is a method that allows the same kind of model, training algorithm and objective function to be reused several times.
 
 
-### Bagging（bootstrap aggregation）###
+### Bagging（bootstrap aggregation) ###
 
 Bootstraping的名称来自于成语 ‘’pull up by your own bootstraps‘’， 意思是依靠你自己的资源，称为自助法，它是一种有放回的抽样方法。Bootstrap的本意是指高靴子后面的悬挂物，小环，是穿鞋子时用手向上拉的工具。意思是不可能的事情后来意思发生了转变，隐喻 ‘’不需要外界帮助，仅依靠自身力量让自己变得更好‘’。
 
