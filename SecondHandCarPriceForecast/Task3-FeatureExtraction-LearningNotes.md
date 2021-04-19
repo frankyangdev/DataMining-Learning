@@ -98,7 +98,7 @@ plt.show()
 * 将所有的变量变换到相似的尺度上。
 
 
-### 3. sklearn.feature_selection.SequentialFeatureSelector ###
+### 3. [sklearn.feature_selection.SequentialFeatureSelector](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SequentialFeatureSelector.html) ###
 
 `class sklearn.feature_selection.SequentialFeatureSelector(estimator, *, n_features_to_select=None, direction='forward', scoring=None, cv=5, n_jobs=None)`
 
