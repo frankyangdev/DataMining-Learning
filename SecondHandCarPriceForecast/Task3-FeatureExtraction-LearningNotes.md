@@ -98,6 +98,76 @@ plt.show()
 * 将所有的变量变换到相似的尺度上。
 
 
+### 3. sklearn.feature_selection.SequentialFeatureSelector ###
+
+`class sklearn.feature_selection.SequentialFeatureSelector(estimator, *, n_features_to_select=None, direction='forward', scoring=None, cv=5, n_jobs=None)`
+
+Transformer that performs Sequential Feature Selection.
+
+This Sequential Feature Selector adds (forward selection) or removes (backward selection) features to form a feature subset in a greedy fashion. At each stage, this estimator chooses the best feature to add or remove based on the cross-validation score of an estimator.
+
+**Example**
+
+```python
+Examples
+
+>>>
+>>> from sklearn.feature_selection import SequentialFeatureSelector
+>>> from sklearn.neighbors import KNeighborsClassifier
+>>> from sklearn.datasets import load_iris
+>>> X, y = load_iris(return_X_y=True)
+>>> knn = KNeighborsClassifier(n_neighbors=3)
+>>> sfs = SequentialFeatureSelector(knn, n_features_to_select=3)
+>>> sfs.fit(X, y)
+SequentialFeatureSelector(estimator=KNeighborsClassifier(n_neighbors=3),
+                          n_features_to_select=3)
+>>> sfs.get_support()
+array([ True, False,  True,  True])
+>>> sfs.transform(X).shape
+(150, 3)
+```
+
+### 4. [from mlxtend.feature_selection import SequentialFeatureSelector](http://rasbt.github.io/mlxtend/user_guide/feature_selection/SequentialFeatureSelector/)  ###
+
+
+Sequential feature selection algorithms are a family of greedy search algorithms that are used to reduce an initial d-dimensional feature space to a k-dimensional feature subspace where k < d. The motivation behind feature selection algorithms is to automatically select a subset of features that is most relevant to the problem. The goal of feature selection is two-fold: We want to improve the computational efficiency and reduce the generalization error of the model by removing irrelevant features or noise. A wrapper approach such as sequential feature selection is especially useful if embedded feature selection -- for example, a regularization penalty like LASSO -- is not applicable.
+
+**SequentialFeatureSelector:**
+
+1. Sequential Forward Selection (SFS)
+2. Sequential Backward Selection (SBS)
+3. Sequential Forward Floating Selection (SFFS)
+4. Sequential Backward Floating Selection (SBFS)
+
+
+**Example**
+
+```python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+X = iris.data
+y = iris.target
+knn = KNeighborsClassifier(n_neighbors=4)
+```
+
+We start by selection the "best" 3 features from the Iris dataset via Sequential Forward Selection (SFS). Here, we set forward=True and floating=False. By choosing cv=0, we don't perform any cross-validation, therefore, the performance (here: 'accuracy') is computed entirely on the training set.
+
+```python
+from mlxtend.feature_selection import SequentialFeatureSelector as SFS
+
+sfs1 = SFS(knn, 
+           k_features=3, 
+           forward=True, 
+           floating=False, 
+           verbose=2,
+           scoring='accuracy',
+           cv=0)
+
+sfs1 = sfs1.fit(X, y)
+```
+
 
 ### Reference: ###
 
