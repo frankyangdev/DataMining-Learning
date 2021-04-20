@@ -63,6 +63,46 @@ model.save('text8_word2vec.model')  # 保存模型
 18.batch_words：每一批的传递给线程的单词的数量，默认为10000
 
 
+### 2.3 NMF(non-negative matrix factorization) 非负矩阵分解 -- 原理与应用 ###
+
+NMF的思想：V=WH（W权重矩阵、H特征矩阵、V原矩阵），通过计算从原矩阵提取权重和特征两个不同的矩阵出来。属于一个无监督学习的算法，其中限制条件就是W和H中的所有元素都要大于0。
+
+![image](https://user-images.githubusercontent.com/39177230/115418800-5a2b9b00-a22c-11eb-840e-b87d272af708.png)
+
+文本数据不光信息量大，而且一般是无结构的。此外，典型的文本数据通常以矩阵的形式被计算机处理，此时的数据矩阵具有高维稀疏的特征，因此，对大规模文本信息进行处理分析的另一个障碍便是如何削减原始数据的维数。NMF算法正是解决这方面难题的一种新手段。NMF在挖掘用户所需数据和进行文本聚类研究中都有着成功的应用例子。由于NMF算法在处理文本数据方面的高效性，著名的商业数据库软件Oracle在其第10版中专门利用NMF算法来进行文本特征的提取和分类。为什么NMF对于文本信息提取得很好呢？原因在于智能文本处理的核心问题是以一种能捕获语义或相关信息的方式来表示文本，但是传统的常用分析方法仅仅是对词进行统计，而不考虑其他的信息。而NMF不同，它往往能达到表示信息的局部之间相关关系的效果，从而获得更好的处理结果。
+话题识别的话跟Probabilistic Latent Semantic Analysis概率隐语义分析相似。
+
+![image](https://user-images.githubusercontent.com/39177230/115419015-8f37ed80-a22c-11eb-9ecd-f38aa20d95be.png)
+
+在这里，wk 可以被解释成为与数据hk的主题相关度
+
+![image](https://user-images.githubusercontent.com/39177230/115419079-9ced7300-a22c-11eb-89c4-2d62ee7ed36e.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,3 +137,4 @@ model.save('text8_word2vec.model')  # 保存模型
 ### Reference: ###
 
 1. [word2vec的原理及实现](https://blog.csdn.net/qq_30189255/article/details/103049569)
+2. [NMF 非负矩阵分解 -- 原理与应用](https://blog.csdn.net/qq_26225295/article/details/51211529)
