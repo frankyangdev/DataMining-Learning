@@ -141,15 +141,6 @@ TRAIN: [0 1 2] TEST: [3]
 
 
 
-
-评价函数与目标函数；
-交叉验证方法；
-留一验证方法；
-针对时间序列问题的验证；
-绘制学习率曲线；
-绘制验证曲线；
-
-
 ### Reference ###
 
 1. [交叉验证方法汇总](https://blog.csdn.net/WHYbeHERE/article/details/108192957)
