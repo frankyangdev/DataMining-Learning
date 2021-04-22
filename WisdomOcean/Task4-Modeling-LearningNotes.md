@@ -1,4 +1,57 @@
 
+### Notebook ###
+
+运行结果 [T4-BuildModeling.ipynb](https://github.com/frankyangdev/DataMining-Learning/blob/main/WisdomOcean/T4-BuildModeling.ipynb)
+
+### [XGBoost模型](https://blog.csdn.net/wuzhongqiang/article/details/104854890) ###
+
+常见的机器学习算法：
+
+* 监督学习算法：逻辑回归，线性回归，决策树，朴素贝叶斯，K近邻，支持向量机，集成算法Adaboost等
+* 无监督算法：聚类，降维，关联规则, PageRank等
+
+根据各个弱分类器之间有无依赖关系，分为Boosting和Bagging
+
+* Boosting流派，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT(Gradient Boosting Decision Tree)、Xgboost
+* Bagging流派，各分类器之间没有依赖关系，可各自并行，比如随机森林（Random Forest）
+
+AdaBoost，是英文"Adaptive Boosting"（自适应增强），它的自适应在于：前一个基本分类器分错的样本会得到加强，加权后的全体样本再次被用来训练下一个基本分类器。同时，在每一轮中加入一个新的弱分类器，直到达到某个预定的足够小的错误率或达到预先指定的最大迭代次数。白话的讲，就是它在训练弱分类器之前，会给每个样本一个权重，训练完了一个分类器，就会调整样本的权重，前一个分类器分错的样本权重会加大，这样后面再训练分类器的时候，就会更加注重前面分错的样本， 然后一步一步的训练出很多个弱分类器，最后，根据弱分类器的表现给它们加上权重，组合成一个强大的分类器，就足可以应付整个数据集了。 这就是AdaBoost， 它强调自适应，不断修改样本权重， 不断加入弱分类器进行boosting。
+
+GBDT(Gradient Boost Decision Tree)就是另一种boosting的方式， 上面说到AdaBoost训练弱分类器关注的是那些被分错的样本，AdaBoost每一次训练都是为了减少错误分类的样本。 而GBDT训练弱分类器关注的是残差，也就是上一个弱分类器的表现与完美答案之间的差距，GBDT每一次训练分类器，都是为了减少这个差距
+
+xgboost与gbdt比较大的不同就是目标函数的定义，但这俩在策略上是类似的，都是聚焦残差（更准确的说， xgboost其实是gbdt算法在工程上的一种实现方式），GBDT旨在通过不断加入新的树最快速度降低残差，而XGBoost则可以人为定义损失函数（可以是最小平方差、logistic loss function、hinge loss function或者人为定义的loss function），只需要知道该loss function对参数的一阶、二阶导数便可以进行boosting，其进一步增大了模型的泛化能力，其贪婪法寻找添加树的结构以及loss function中的损失函数与正则项等一系列策略也使得XGBoost预测更准确。
+
+![image](https://user-images.githubusercontent.com/39177230/112449276-2de84000-8d8e-11eb-967e-0f2a7bc38309.png)
+
+xgboost相比于GBDT有哪些优点：
+
+* 精度更高：GBDT只用到一阶泰勒， 而xgboost对损失函数进行了二阶泰勒展开， 一方面为了增加精度， 另一方面也为了能够自定义损失函数，二阶泰勒展开可以近似大量损失函数
+* 灵活性更强：GBDT以CART作为基分类器，而Xgboost不仅支持CART，还支持线性分类器，另外，Xgboost支持自定义损失函数，只要损失函数有一二阶导数。
+* 正则化：xgboost在目标函数中加入了正则，用于控制模型的复杂度。有助于降低模型方差，防止过拟合。正则项里包含了树的叶子节点个数，叶子节点权重的L2范式。
+* Shrinkage（缩减）：相当于学习速率。这个主要是为了削弱每棵树的影响，让后面有更大的学习空间，学习过程更加的平缓
+* 列抽样：这个就是在建树的时候，不用遍历所有的特征了，可以进行抽样，一方面简化了计算，另一方面也有助于降低过拟合
+* 缺失值处理：这个是xgboost的稀疏感知算法，加快了节点分裂的速度
+* 并行化操作：块结构可以很好的支持并行计算
+
+
+### [LightGBM模型](https://blog.csdn.net/wuzhongqiang/article/details/105350579)
+
+xgboost寻找最优分裂点的复杂度=特征数量×分裂点的数量×样本的数量
+
+Lightgbm里面的直方图算法就是为了减少分裂点的数量， Lightgbm里面的单边梯度抽样算法就是为了减少样本的数量， 而Lightgbm里面的互斥特征捆绑算法就是为了减少特征的数量。 并且后面两个是Lightgbm的亮点所在。
+
+与xgboost对比一下，总结一下lightgbm的优点作为收尾， 从内存和速度两方面总结：
+
+* 内存更小
+* XGBoost 使用预排序后需要记录特征值及其对应样本的统计值的索引，而 LightGBM 使用了直方图算法将特征值转变为 bin 值，且不需要记录特征到样本的索引，将空间复杂度从 O(2*#data) 降低为 O(#bin) ，极大的减少了内存消耗；
+* LightGBM 采用了直方图算法将存储特征值转变为存储 bin 值，降低了内存消耗；
+* LightGBM 在训练过程中采用互斥特征捆绑算法减少了特征数量，降低了内存消耗。
+* 速度更快
+* LightGBM 采用了直方图算法将遍历样本转变为遍历直方图，极大的降低了时间复杂度；
+* LightGBM 在训练过程中采用单边梯度算法过滤掉梯度小的样本，减少了大量的计算；
+* LightGBM 采用了基于 Leaf-wise 算法的增长策略构建树，减少了很多不必要的计算量；
+* LightGBM 采用优化后的特征并行、数据并行方法加速计算，当数据量非常大的时候还可以采用投票并行的策略；
+* LightGBM 对缓存也进行了优化，增加了 Cache hit 的命中率。
 
 
 ### 交叉验证(Cross validation) ###
