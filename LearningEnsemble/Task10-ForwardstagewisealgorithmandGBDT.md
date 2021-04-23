@@ -85,3 +85,4 @@ The following example shows how to fit a gradient boosting classifier with 100 d
 
 ### Reference ###
 1. [前向分布算法与GBDT算法梳理](https://blog.csdn.net/weixin_39982211/article/details/89048783)
+2. [GBDT算法原理以及实例理解](https://blog.csdn.net/zpalyq110/article/details/79527653)
