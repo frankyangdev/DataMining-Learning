@@ -1,3 +1,6 @@
+### Notebook [Task10.ipynb](https://github.com/frankyangdev/DataMining-Learning/blob/main/LearningEnsemble/Task10.ipynb) ###
+
+
 ### 1. 前向分步算法 Forward Stagewise algorithm ###
 
 输入：训练数据集 T={(x1,y1),(x2,y2),⋯,(xN,yN)}T={(x1,y1),(x2,y2),⋯,(xN,yN)}；损失函数 L(y,f(x))L(y,f(x)) ；基函数集 {b(x;γ)}{b(x;γ)}；
