@@ -2,7 +2,7 @@
 
 运行后的Notebook: [T5-ModelEnsemble.ipynb](https://github.com/frankyangdev/DataMining-Learning/blob/main/SecondHandCarPriceForecast/T5-ModelEnsemble.ipynb)
 
-### 融合代码学习 ###
+### 2. 融合代码学习 ###
 
 
 如果你不能做选择的话，你可以同时选择这2种，使用stacked泛化器创建stacked集成和折外预测。然后使用留出集在第三层进一步结合这些stacked模型。
