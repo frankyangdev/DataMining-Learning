@@ -21,6 +21,26 @@
 * 传统的GBDT在每轮迭代时使用全部的数据，XGBoost则采用了与随机 森林相似的策略，支持对数据进行采样。
 * 传统的GBDT没有设计对缺失值进行处理，XGBoost能够自动学习出缺 失值的处理策略。
 
+### lightGBM vs XGBoost ###
+
+1. xgboost采用的是level-wise的分裂策略，而lightGBM采用了leaf-wise的策略，区别是xgboost对每一层所有节点做无差别分裂，可能有些节点的增益非常小，对结果影响不大，但是xgboost也进行了分裂，带来了务必要的开销。 leaft-wise的做法是在当前所有叶子节点中选择分裂收益最大的节点进行分裂，如此递归进行，很明显leaf-wise这种做法容易过拟合，因为容易陷入比较高的深度中，因此需要对最大深度做限制，从而避免过拟合。
+
+2. lightgbm使用了基于histogram的决策树算法，这一点不同与xgboost中的 exact 算法，histogram算法在内存和计算代价上都有不小优势。
+
+　　（1）内存上优势：很明显，直方图算法的内存消耗为(#data* #features * 1Bytes)(因为对特征分桶后只需保存特征离散化之后的值)，而xgboost的exact算法内存消耗为：(2 * #data * #features* 4Bytes)，因为xgboost既要保存原始feature的值，也要保存这个值的顺序索引，这些值需要32位的浮点数来保存。
+  
+　　（2）计算上的优势，预排序算法在选择好分裂特征计算分裂收益时需要遍历所有样本的特征值，时间为(#data),而直方图算法只需要遍历桶就行了，时间为(#bin)
+
+3. 直方图做差加速
+一个子节点的直方图可以通过父节点的直方图减去兄弟节点的直方图得到，从而加速计算。
+
+4. lightgbm支持直接输入categorical 的feature
+
+在对离散特征分裂时，每个取值都当作一个桶，分裂时的增益算的是”是否属于某个category“的gain。类似于one-hot编码。
+
+5. 多线程优化
+
+
 
 
 
@@ -56,3 +76,4 @@
 2. [机器学习集成学习之XGBoost（基于python实现）](https://zhuanlan.zhihu.com/p/143009353)
 3. [XGBoost算法](https://blog.csdn.net/weixin_41510260/article/details/95339201)
 4. [通俗理解kaggle比赛大杀器xgboost](https://blog.csdn.net/v_JULY_v/article/details/81410574)
+5. [RF、GBDT、XGBoost、lightGBM原理与区别](https://blog.csdn.net/data_scientist/article/details/79022025)
